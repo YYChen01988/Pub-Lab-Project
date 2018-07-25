@@ -5,13 +5,12 @@ class Pub
   def initialize(pub_name, pub_till, pub_drinks)
     @pub_name = pub_name
     @pub_till = pub_till
-    @pub_drinks = []
+    @pub_drinks = pub_drinks
   end
 
 
   def add_drinks(new_drink)
-    @pub_drinks << new_drink
-
+    @pub_drinks[new_drink] += 1
   end
 
   def pub_drinks_count()
@@ -42,5 +41,13 @@ class Pub
     end
   end
 
-#
+  def stock_value()
+    sum = 0
+    for drink in @pub_drinks
+      sum += drink[0].drink_price * drink[1]
+    end
+    return sum
+  end
+
+
 end

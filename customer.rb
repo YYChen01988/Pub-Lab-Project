@@ -10,8 +10,14 @@ class Customer
   end
 
   def customer_buy(purchase)
-    @customer_wallet -= purchase.drink_price()
-    @drunkenness += purchase.alcohol_level()
+    if purchase.class == Drink && check_customer_age()
+      @customer_wallet -= purchase.drink_price()
+      @drunkenness += purchase.alcohol_level()
+    elsif purchase.class == Food
+      @customer_wallet -= purchase.food_price()
+      @drunkenness -= purchase.rejuvenation_level()
+    end
+
   end
 
   def check_customer_age()
@@ -21,6 +27,12 @@ class Customer
       return false
     end
   end
+
+
+
+
+
+
 
 
 
