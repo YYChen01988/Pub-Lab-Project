@@ -7,15 +7,15 @@ require_relative("../drink.rb")
 
 class PubTest < MiniTest::Test
   def setup
-    @drink_1 = Drink.new("Coke", 5)
-    @drink_2 = Drink.new("Beer", 10)
+    @drink_1 = Drink.new("Coke", 5, 0)
+    @drink_2 = Drink.new("Beer",10, 2)
     # @drinks = [@drink_1, @drink_2]
     @the_captain = Pub.new("The_captain", 0, [])
     @the_captain.add_drinks(@drink_1)
     @the_captain.add_drinks(@drink_2)
 
-    @Tom = Customer.new("Tom", 500, 45)
-    @Billy = Customer.new("Billy", 600, 15)
+    @Tom = Customer.new("Tom", 500, 45, 0)
+    @Billy = Customer.new("Billy", 600, 15, 11)
 
 
   end
@@ -51,6 +51,9 @@ class PubTest < MiniTest::Test
     assert_equal(false, @the_captain.pub_check_customer_age(@Billy))
   end
 
+  def test_pub_check_drunkenness()
+    assert_equal(false, @the_captain.pub_check_drunkenness(@Billy))
+  end
 
 
 end

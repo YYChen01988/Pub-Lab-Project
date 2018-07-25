@@ -24,14 +24,23 @@ class Pub
   end
 
   def pub_sell_item(item, customer)
-    pub_increase_till(item)
-    customer.customer_buy(item)
+    if pub_check_drunkenness(customer)
+      pub_increase_till(item)
+      customer.customer_buy(item)
+    end
   end
 
   def pub_check_customer_age(customer)
     customer.check_customer_age()
   end
 
+  def pub_check_drunkenness(customer)
+    if customer.drunkenness() <10
+      return true
+    else
+      return false
+    end
+  end
 
-
+#
 end
