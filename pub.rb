@@ -18,7 +18,15 @@ class Pub
     return @pub_drinks.count()
   end
 
+  def pub_increase_till(item)
+    @pub_till += item.drink_price()
 
+  end
+
+  def pub_sell_item(item, customer)
+    pub_increase_till(item)
+    customer.customer_buy(item)
+  end
 
 
 end
