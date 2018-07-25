@@ -28,5 +28,10 @@ class Pub
     customer.customer_buy(item)
   end
 
+  def pub_check_customer_age(customer)
+    customer.check_customer_age()
+  end
+
+
 
 end

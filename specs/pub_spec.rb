@@ -14,7 +14,8 @@ class PubTest < MiniTest::Test
     @the_captain.add_drinks(@drink_1)
     @the_captain.add_drinks(@drink_2)
 
-    @Tom = Customer.new("Tom", 500)
+    @Tom = Customer.new("Tom", 500, 45)
+    @Billy = Customer.new("Billy", 600, 15)
 
 
   end
@@ -38,16 +39,17 @@ class PubTest < MiniTest::Test
   end
 
   def test_pub_sell_item()
-
     @the_captain.pub_sell_item(@drink_1, @Tom)
     assert_equal(5, @the_captain.pub_till())
 
     result = @Tom.customer_wallet()
     assert_equal(495, result)
-
   end
 
-
+  def test_pub_check_customer_age()
+    assert_equal(true, @the_captain.pub_check_customer_age(@Tom))
+    assert_equal(false, @the_captain.pub_check_customer_age(@Billy))
+  end
 
 
 
